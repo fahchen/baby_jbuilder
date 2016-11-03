@@ -1,6 +1,8 @@
 # baby_jbuilder
 
 ```ruby
+# hello_world.json.baby_jbuilder
+
 json.name do
   json.first 'Phil'
   json.set! :last, 'Chen'
@@ -16,11 +18,11 @@ json.address do
     end
   end
 end
-end
 ```
 
 This will build the follwing data:
 ```json
+// hello_world.json
 {
   "name": {
     "first": "Phil",
