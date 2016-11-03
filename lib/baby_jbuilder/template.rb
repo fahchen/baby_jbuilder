@@ -19,7 +19,7 @@ module BabyJbuilder
 
     def set!(key, value = nil, *args)
       result = if ::Kernel.block_given?
-                 yield
+                 _scope { yield }
                else
                  value
                end
@@ -39,6 +39,15 @@ module BabyJbuilder
 
     def _set_value(key, value)
       @attributes[key] = value
+    end
+
+    def _scope
+      parent_attributes = @attributes
+      @attributes = ActiveSupport::OrderedHash.new
+      yield
+      @attributes
+    ensure
+      @attributes = parent_attributes
     end
   end
 end
