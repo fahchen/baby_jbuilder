@@ -52,4 +52,17 @@ class TemplateTest < ActiveSupport::TestCase
     assert_equal 'Phil', parsed_result['name']['first']
     assert_equal 'Chengdu', parsed_result['address']['contry']['province']['city']['name']
   end
+
+  test 'set! value' do
+    result = BabyJbuilder::Template.render do |json|
+      json.set! :name do
+        json.set! :first, 'Phil'
+        json.set! :last, 'Chen'
+      end
+    end
+
+    parsed_result = JSON.parse(result)
+    assert_equal 'Phil', parsed_result['name']['first']
+    assert_equal 'Chen', parsed_result['name']['last']
+  end
 end
