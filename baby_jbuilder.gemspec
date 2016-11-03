@@ -17,5 +17,7 @@ Gem::Specification.new do |s|
   s.platform      = Gem::Platform::RUBY
   s.require_paths = ['lib']
 
+  s.add_dependency 'activesupport', '>= 5.0.0'
+
   s.add_development_dependency 'rake', '> 10.0'
 end
